@@ -3,7 +3,7 @@
 
 
 
-<html class="theme-next gemini" lang="">
+<html class="theme-next pisces" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -73,7 +73,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '6.0.6',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -157,6 +157,9 @@
   </style>
 </noscript>
 
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -339,56 +342,18 @@
       
         
           
-            <h2 id="校色仪买哪款"><a href="#校色仪买哪款" class="headerlink" title="校色仪买哪款"></a>校色仪买哪款</h2><ol>
-<li>首选 x-rite i1 Display Pro，精确性与速度俱佳；</li>
-<li>嫌上面那个贵的话，可以考虑 x-rite ColorMunki Display，速度比上面那个略慢；</li>
-<li>想尽可能便宜的话，可以买 Datacolor Spyder5 EXPRESS，速度更慢，精确性也略差，但非专业用途也完全可胜任。</li>
-</ol>
-<h2 id="校色软件选哪个"><a href="#校色软件选哪个" class="headerlink" title="校色软件选哪个"></a>校色软件选哪个</h2><p>请无视校色仪厂家自带的软件，直接上 DisplayCAL：<a href="https://displaycal.net/" target="_blank" rel="noopener">https://displaycal.net/</a></p>
-<h2 id="校色步骤"><a href="#校色步骤" class="headerlink" title="校色步骤"></a>校色步骤</h2><ol>
-<li>先是一点准备工作，恢复你的显示器设置为出厂默认，如果你使用过 macOS 或者 Windows 自带的颜色校正程序的话也要改回系统默认的 profile（MacBook Air 用户需要选择 sRGB profile 而不是默认的“Color LCD”），并且保证在下面步骤 6 开始前亮屏时间超过 30 分钟；</li>
-<li>进入 <a href="https://displaycal.net/" target="_blank" rel="noopener">DisplayCAL 官网</a>，打开后点击“Get DisplayCAL”，然后在“Get DisplayCAL standalone”标题下，根据你的操作系统选择“For Mac OS X”或者“For Windows”下载相应文件并安装（Mac 下直接运行加载镜像即可）；</li>
-<li>运行 DisplayCAL，软件会提示你安装 Argyll CMS，按提示下载并安装即可；</li>
-<li>如果你用的是 Spyder 系列校色仪并且使用的是 Windows，点击 Tools 菜单下的“Install Argyll CMS instrument drivers…”，并按照提示操作（过程需要重启）来禁用系统的驱动程序证书验证；</li>
-<li>把你的校色仪通过 USB 接口连接到你的电脑上，在 DisplayCAL 中选择你要校准的显示设备，然后点击右边的蓝色小按钮，随后按钮右侧会显示你连接的校色仪名称，并会弹出提示让你加载校色仪的修正文件，按照提示安装相应的修正文件，然后在显示的校色仪右边的“Mode”（如果你用的是 Spyder 系列）中，或是在下方的“Correction”（如果你用的是 x-rite 产品）中根据你使用屏幕的类型选择对应的项目，例如现在最常见的屏幕是白色 LED 背光的 LCD；<ul>
-<li>如果你使用的是 Windows，在界面顶部的“Settings”中选择“Office &amp; Web (D65, Gamma 2.2）”，然后点最下面的“Calibrate &amp; profile”按钮；</li>
-<li>如果你使用的是 macOS，在界面顶部的“Settings”中选择“Office &amp; Web (D65, Gamma 2.2）”，切换到“Profiling”一栏，把“Amount of patches”滑块移动到最左端，然后点最下面的“Calibrate &amp; profile”按钮；</li>
-</ul>
-</li>
-<li>参考校色仪附带的说明书，把校色仪挂在屏幕上，测量部位大约对准新弹出的窗口中心，然后点击“Start measurement”，如果你校正的是台式显示器并且提供了分别调节红绿蓝三色的功能的话，按照实时返回的测量结果把三色调节平衡，否则只需要把屏幕亮度调节到你觉得合适的水平即可（一般以 100-150 cd/m2 为宜）；</li>
-<li>调整完成后点击“Stop measurement”按钮，然后点击右边的“Continue on to calibration”按钮，接下来的过程会持续 30- 150 分钟不等，期间请保持周围环境光强度没有大的变化；</li>
-<li>校色过程完成后会弹出窗口提示结果，点击“Install profile”，取下校色仪，收工。</li>
-</ol>
-<h2 id="浏览器设置"><a href="#浏览器设置" class="headerlink" title="浏览器设置"></a>浏览器设置</h2><ul>
-<li>Chrome 从 62 版本开始已经支持并默认启用完整的色彩管理，不需要额外设置，然而我发现 Chrome 的色彩管理和 macOS 上有非常相似的 bug，即不能正确处理除 single curve+matrix 以外形式的 profile，所以如果你是在 Windows 下使用 Chrome 浏览器，请按照上面校色步骤 5.2 处理；</li>
-<li>Firefox 目前不支持视频的色彩管理，只能正确处理图片，并且需要一点设置。方法是打开 about:config，搜索“color_management”，将“gfx.color_management.enablev4 ”改为“true”，将“gfx.color_management.mode”改为“1”，然后重启即可；</li>
-<li>Safari（macOS）支持并默认启用完整的色彩管理，不需要额外设置。</li>
-</ul>
-<h2 id="看图应用设置"><a href="#看图应用设置" class="headerlink" title="看图应用设置"></a>看图应用设置</h2><p>看图软件太多啦，我没有一一测试过。这里只把 XnView MP 作为例子来说一下：打开 XnView MP 的 Settings - General - ICC，勾选 “Use ICC profile for monitor (slower)”，选择“System”，然后下方的“Default profile of picture”选择“sRGB”。</p>
-<p>Photoshop 自带完整的色彩管理系统，一般情况下不需要进行额外设置。</p>
-<p>顺便说，Windows 10 自带的“Photos”应用，可以识别图片中的 profile，但只会将其转换到 sRGB，而不会理会我们通过校色得到的 profile ；macOS 下的 Preview 应用支持色彩管理，但图片暗部细节和其他应用（Photoshop、Safari 以及正确配置后的 XnView MP）有轻微差异，原因不明，怀疑是 bug。</p>
-<h2 id="mpv-IINA"><a href="#mpv-IINA" class="headerlink" title="mpv/IINA"></a>mpv/IINA</h2><ul>
-<li>mpv 只需要在配置文件（mpv.conf）中增加一行“icc-profile-auto”即可；</li>
-<li>IINA 需要打开 Preferences - Advanced，在“Additional MPV options”中添加一行，Name 为 “icc-profile”，value 为你的 icc profile 所在位置，不出意外的话应该是类似“~/Library/ColorSync/Profiles/xxx.icc”的形式。</li>
-</ul>
-<h2 id="madVR"><a href="#madVR" class="headerlink" title="madVR"></a>madVR</h2><ul>
-<li>在 DisplayCAL 界面顶部的 <strong>Settings</strong> 中选择之前校色得到的 icc 文件名，然后在 <strong>Options</strong> 菜单中勾选 <em>Enable 3D LUT tab</em> 和 <em>Show advanced options</em> ；</li>
-<li>下面切换到 3D LUT 一栏，取消勾选“Apply calibration (vcgt)”，“3D LUT file format”选择“madVR (.3dlut)”，其他选项不需要更改；</li>
-<li>点击最下方的“Create 3D LUT…”按钮，开始生成 3dlut 文件，完成后点击“Install 3D LUT”按钮，完成；</li>
-<li>如果因为某些原因导致 3D LUT 没有正常自动安装，手动安装的方法是进入 madVR 设置，在 devices - 你的屏幕设备名 - calibration 中，选择“calibrate this display by using external 3DLUT files”，确保“disable GPU gamma ramps”未勾选，然后点击下方“BT.709”那一行右侧的黄色文件夹图标，指定为刚才得到的 3dlut 文件的位置。</li>
-</ul>
-<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><p>Q：我不想折腾，直接把别人在同型号显示器上的校色文件拿来用可以么？</p>
-<p>A：可以试试，但不要指望准确，得到更差的结果也完全不奇怪。</p>
-<p>Q：为什么不使用光度计？</p>
-<p>A：x-rite i1 Display Pro 足以满足普通人的需要，包括目前各种常见的广色域屏幕。</p>
-<p>Q：为什么不推荐其他更高级的蜘蛛（Spyder）型号？</p>
-<p>A：所有同代 Spyder 的型号 sensor 都是一样的，更高级的型号只是在配套软件上有区别；我们这里已经直接放弃了配套软件，使用功能全面且免费的 DisplayCAL 了，所以更高级的 Spyder 没有意义。</p>
-<p>Q：我不喜欢 DisplayCAL 的 profile loader 随 Windows 开机启动并一直运行，能不用它么？</p>
-<p>A：可以，但是不推荐。如果不是因为 Windows 自带的色彩管理程序垃圾到了匪夷所思的地步，估计 DisplayCAL 的作者也不至于非要蛋疼单独写个 profile loader 出来。Windows 自带色彩管理程序的问题主要在于当屏幕数量大于一个时，只有在扩展桌面模式下能把不同的 profile 正确应用在对应的屏幕上，其他模式下的颜色都是错误的，而且在模式间切换时几乎总是会导致颜色错误；此外在加载校正曲线时的算法也有错误。如果你只有单个屏幕且不在乎精度损失，可以在安装 DisplayCAL 时选择“Let the operating system handle calibration loading”，如已经安装则打开 Windows Color Management - Advanced，点击最下方的“Change system defaults”，新窗口中的 Advanced - Display Calibration 下勾选“Use Windows display calibration”，并在 Windows Task Scheduler 中禁用 DisplayCAL Loader Launcher。</p>
-<p>Q：为何在创建 3D LUT 时要取消勾选默认的“Apply calibration (vcgt)”？</p>
-<p>A：DisplayCAL 默认选择将此选项勾上的原因是为了利用 madVR 更高精度的内部运算和抖动处理，避免显卡 gamma table 校正造成的精度损失。如果你不在意我说的几点使用体验上的不足，一定要追求尽可能高的画质，请按照 DisplayCAL 默认那样勾选“Apply calibration (vcgt)”，甚至不嫌麻烦的话，从上面校色步骤的第 5 步开始，选择“Video 3D LUT for madVR (D65, Rec. 709 / Rec. 1886)”重新挂上校色仪测量一遍，获得一个精度更高的 profile。 </p>
-
-          
+          校色仪买哪款
+首选 x-rite i1 Display Pro，精确性与速度俱佳；
+嫌上面那个贵的话，可以考虑 x-rite ColorMunki Display，速度比上面那个略慢；
+想尽可能便宜的话，可以买 Datacolor Spyder5 EXPRESS，速度更慢，精确性也略差，但非专业用途
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/20/color-management/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -510,13 +475,17 @@
       
         
           
-            <p>八通道：<a href="http://shop.lenovo.com/perksoffer/us/en/laptops/thinkpad" target="_blank" rel="noopener">http://shop.lenovo.com/perksoffer/us/en/laptops/thinkpad</a></p>
-<p>passcode:<code>NJ*PERKSEPP</code></p>
-<p>日本：<a href="https://www3.lenovo.com/jp/ja/epp02/gatekeeper/showpage?toggle=PasscodeGatekeeper" target="_blank" rel="noopener">https://www3.lenovo.com/jp/ja/epp02/gatekeeper/showpage?toggle=PasscodeGatekeeper</a></p>
-<p>passcode:<code>eppqazpass</code></p>
-<p>七通道：<a href="https://www3.lenovo.com/us/en/barnesnoblegold/gatekeeper/showpage?toggle=RegistrationGatekeeper" target="_blank" rel="noopener">https://www3.lenovo.com/us/en/barnesnoblegold/gatekeeper/showpage?toggle=RegistrationGatekeeper</a></p>
-
-          
+          八通道：http://shop.lenovo.com/perksoffer/us/en/laptops/thinkpad
+passcode:NJ*PERKSEPP
+日本：https://www3.lenovo.com/jp/ja/epp02/gatekeeper/showpage?toggle=Pa
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/19/lenovo/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -638,17 +607,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/19/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -794,7 +761,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.6</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.6</div>
 
 
 
@@ -844,6 +811,8 @@
 
 
 
+  
+
 
 
 
@@ -869,6 +838,11 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
