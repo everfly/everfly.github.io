@@ -97,19 +97,23 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小楼一夜听风雨">
-<meta property="og:url" content="https://liutao.xyz/index.html">
+  <meta name="description" content="Some pre-information: Every hardware has an hardware id. With this id the right driver for the hardware can be installed. But the Touchpads seems to be dumb and don’t have any hw-id. The system (BIOS,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Replace W540 Touchpad with a 3 button W541 Touchpad">
+<meta property="og:url" content="https://liutao.xyz/replace-w540-keyboard/index.html">
 <meta property="og:site_name" content="小楼一夜听风雨">
+<meta property="og:description" content="Some pre-information: Every hardware has an hardware id. With this id the right driver for the hardware can be installed. But the Touchpads seems to be dumb and don’t have any hw-id. The system (BIOS,">
+<meta property="og:updated_time" content="2018-03-21T21:50:42.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小楼一夜听风雨">
+<meta name="twitter:title" content="Replace W540 Touchpad with a 3 button W541 Touchpad">
+<meta name="twitter:description" content="Some pre-information: Every hardware has an hardware id. With this id the right driver for the hardware can be installed. But the Touchpads seems to be dumb and don’t have any hw-id. The system (BIOS,">
 
 
 
 
 
 
-  <link rel="canonical" href="https://liutao.xyz/"/>
+  <link rel="canonical" href="https://liutao.xyz/replace-w540-keyboard/"/>
 
 
 
@@ -119,7 +123,7 @@
   };
 </script>
 
-  <title>小楼一夜听风雨</title>
+  <title>Replace W540 Touchpad with a 3 button W541 Touchpad | 小楼一夜听风雨</title>
   
 
 
@@ -169,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,9 +258,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -289,9 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/replace-w540-keyboard/" itemprop="url">Replace W540 Touchpad with a 3 button W541 Touchpad</a></h1>
+          <h1 class="post-title" itemprop="name headline">Replace W540 Touchpad with a 3 button W541 Touchpad</h1>
         
 
         <div class="post-meta">
@@ -340,19 +341,32 @@
       
 
       
-        
-          <p>Some pre-information:</p>
+        <p>Some pre-information:</p>
 <p>Every hardware has an hardware id. With this id the right driver for the hardware can be installed.</p>
 <p>But the Touchpads seems to be dumb and don’t have any hw-id. The system (BIOS, system controller, whatever) propagated an hardware id to the operating system.</p>
-<p>The hardware ID of the touchpad can be read out in windows in the device-manager.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/replace-w540-keyboard/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>The hardware ID of the touchpad can be read out in windows in the device-manager.<br><a id="more"></a><br>When you look at the properties of the “Synaptic” or “Thinkpad” Pointing Device the hardware ID can be found in the “Detail”-Tab and the property “Hardware-IDs”. In my case the old and new Touchpad had the same ID, <strong>LEN0034</strong>.</p>
+<p>I’ve done some research and found out, that the Touchpad on a W541 has the ID <strong>LEN004A</strong>. These two id’s are all we need.</p>
+<p>First download a current driver for you thinkpad. In my case I used the driver N10GW15W which is normally only for the W541. But since both system are very similar, there are no problem to expect.</p>
+<p>After download extract the driver and DON’T start the installation procedure.</p>
+<p>Go to the extraction directory search for the right installation directory for your system. On an 32bit Windows, use the directory WinWDF/x86, and on a 64bit the directory WinWDF/x64.</p>
+<p>In this directory you should find a file named “SynPD.inf”. Edit this file with an editor (Notepad or similar).</p>
+<p>With this file the right driver for your hardware is choosen.</p>
+<p>Now search for your current HW-id. In my case it is LEN0034.</p>
+<pre><code>%SMB.IBMDeviceDesc%  = LENOVO_GROUP16_InterTouch_Inst,*LEN0032
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP14_InterTouch_Inst,*LEN0033
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP17_InterTouch_Inst,*LEN0034
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP37_InterTouch_Inst,*LEN0035
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP38_InterTouch_Inst,*LEN0036
+</code></pre><p>Now remove the line <em>%SMB.IBMDeviceDesc%  = LENOVO_GROUP17_InterTouch_Inst,\</em>LEN0034*  Now the wrong driver won’t be installed any more.<br>Now search for the HW-id for your new touchpad (the W541 ID, where the new-old one is installed at, is LEN004A).<br>In my case I found LEN004A a few lines below.</p>
+<pre><code>%SMB.IBMDeviceDesc%  = LENOVO_GROUP12_InterTouch_Inst,*LEN0047
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP40_InterTouch_Inst,*LEN0048
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP43_InterTouch_Inst,*LEN004A
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP40_InterTouch_Inst,*LEN004B
+%SMB.IBMDeviceDesc%  = LENOVO_GROUP8_InterTouch_Inst,*LEN0050
+</code></pre><p>In this line, change the HW-ID from LEN004A to LEN0034 (please use your IDs).</p>
+<p>Now <strong>repeat this until you have changed every section</strong>. In my case, there is 3 different LEN0034 and LEN004A.</p>
+<p>Save the file and just start the normal installation. You will get an error because the driver has changed. By modifying the file, the driver became unsigned now, and you have to <strong>disable driver signature enforcement</strong> in Windows 8+ in order to install. It is found in advanced startup options, in <strong>Settings - Update - Recovery in Windows 10</strong>. Only then will the setup offer the option to install the driver ‘anyway’, and be able to succeed. A bit lengthy, but you can get the latest version of the driver working.</p>
+
       
     </div>
 
@@ -372,148 +386,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liutao.xyz/color-management/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="everfly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小楼一夜听风雨">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/color-management/" itemprop="url">简明屏幕校色及色彩管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T16:32:42+01:00">2018-03-20</time>
+              <a href="/color-management/" rel="next" title="简明屏幕校色及色彩管理">
+                <i class="fa fa-chevron-left"></i> 简明屏幕校色及色彩管理
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>转载自 <strong>boday</strong> — <a href="https://bbs.saraba1st.com/2b/thread-1157782-1-1.html" target="_blank" rel="noopener">简明屏幕校色及色彩管理</a></p>
-</blockquote>
-<h2 id="校色仪买哪款"><a href="#校色仪买哪款" class="headerlink" title="校色仪买哪款"></a>校色仪买哪款</h2><ol>
-<li>首选 x-rite i1 Display Pro，精确性与速度俱佳；</li>
-<li>嫌上面那个贵的话，可以考虑 x-rite ColorMunki Display，速度比上面那个略慢；</li>
-<li>想尽可能便宜的话，可以买 Datacolor Spyder5 EXPRESS，速度更慢，精确性也略差，但非专业用途也完全可胜任。</li>
-</ol>
-<h2 id="校色软件选哪个"><a href="#校色软件选哪个" class="headerlink" title="校色软件选哪个"></a>校色软件选哪个</h2><p>请无视校色仪厂家自带的软件，直接上 DisplayCAL：<a href="https://displaycal.net/" target="_blank" rel="noopener">https://displaycal.net/</a><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/color-management/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -523,140 +417,19 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liutao.xyz/lenovo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="everfly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小楼一夜听风雨">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/lenovo/" itemprop="url">联想折扣通道</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T23:48:20+01:00">2018-03-19</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://shop.lenovo.com/perksoffer/us/en/laptops/thinkpad" target="_blank" rel="noopener">八通道地址</a> PASSCODE:<code>NJ*PERKSEPP</code></p>
-<p><a href="https://www3.lenovo.com/jp/ja/epp02/gatekeeper/showpage?toggle=PasscodeGatekeeper" target="_blank" rel="noopener">日本</a> PASSCODE:<code>eppqazpass</code></p>
-<p><a href="https://www3.lenovo.com/us/en/barnesnoblegold/gatekeeper/showpage?toggle=RegistrationGatekeeper" target="_blank" rel="noopener">七通道地址</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -864,6 +637,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
 
   
 
