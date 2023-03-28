@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://everfly.github.io/sitemap.xml
